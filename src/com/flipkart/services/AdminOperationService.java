@@ -3,7 +3,9 @@
  */
 package com.flipkart.services;
 
-import com.flipkart.bean.Course;
+import java.util.List;
+import com.flipkart.dao.*;
+import com.flipkart.bean.*;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
 
@@ -14,14 +16,14 @@ import com.flipkart.bean.Student;
 public class AdminOperationService implements AdminServiceInterface{
 	
 	
-	public void generateReportCard() {
-		// Logic to generate the report card for the given student
-		System.out.println("Report Card is generated");
-	}
-	
-	public void addProfessor() {
+	public void addProfessor(Professor professor){ //done
 		// Logic to add professor.
-		System.out.println("Professor is added");
+		
+		
+		AdminDAOInterface adminDAOOperation= new AdminDAOImplementation();
+		
+		adminDAOOperation.addProfessor(professor);
+		
 	}
 	public void approveStudentRegistration() {
 		// Logic to approveStudentRegistration
@@ -29,35 +31,35 @@ public class AdminOperationService implements AdminServiceInterface{
 		System.out.println("Student Registration is approved");
 	}
 	
-	public void cancelStudentRegistration() {
-		// Logic to cancel Student Registration
-		
-		System.out.println("Student Registration is canceled.");
-	}
 	
-	public void addCourse() {
-		// Logic to add new course in the catalogue  
-		System.out.println("Course is added.");
+	public void addCourse(Course course) { //done
+		// Logic to add new course in the catalogue 
+		
+		
+	CatalogDAOInterface catalogOperations=new CatalogDAOImplementation();
+	catalogOperations.addCourse(course);
+	
+		
 		
 	}
-	public void removeCourse() {
+	public void removeCourse(String courseCode) { //done
 		// Logic to remove the course from the catalogue
-		
-		System.out.println("Course is removed.");
+		CatalogDAOInterface catalogOperations=new CatalogDAOImplementation();
+		catalogOperations.removeCourse(courseCode);
 	}
 	
-	public void updateCourse() {
+	public void updateCourse(String courseCode,String newInstructorId,boolean isOffered,String newCourseName) { //done
 		// Logic to update the course from the catalogue
 		
-		System.out.println("Course is updated.");
+		CatalogDAOInterface catalogOperations=new CatalogDAOImplementation();
+		catalogOperations.updateCourse(courseCode,newInstructorId,isOffered,newCourseName);
 	}
 	
-	public boolean validateCourseCapacity() {
-		
-		System.out.println("Validating the course capacity");
-		
-		return true;
+	public void assignCourseToProfessor(String courseCode,int professorId) {
+		CatalogDAOInterface catalogOperations=new CatalogDAOImplementation();
+		catalogOperations.assignCourseToProfessor(courseCode,professorId);
 	}
+	
 	
 
 }

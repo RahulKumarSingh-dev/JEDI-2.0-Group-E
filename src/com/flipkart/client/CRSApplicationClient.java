@@ -2,7 +2,7 @@
 package com.flipkart.client;
 
 import java.util.*;
-
+import com.flipkart.services.*;
 
 /**
  * @author LENOVO
@@ -37,6 +37,7 @@ public class CRSApplicationClient {
 
 			switch (choice) {
 			case 1:
+				
 				crsApplication.loginUser();
 				break;
 
@@ -84,8 +85,12 @@ public class CRSApplicationClient {
 		System.out.println("Enter the Password:");
 		String password = takeInput.nextLine();
 		System.out.println("Enter the Role: Admin, Student, Professor");
-		
+		LoginOperationService loginOperations = new LoginOperationService();
 		String role = takeInput.nextLine();
+		boolean validcredential=loginOperations.checkCredentials(userName,password,role);
+		if(!validcredential) {
+			return ;
+		}
 		switch (role) {
 
 		case "Admin":

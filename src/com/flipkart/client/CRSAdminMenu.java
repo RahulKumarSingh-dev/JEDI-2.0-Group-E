@@ -14,6 +14,7 @@ import java.util.*;
 public class CRSAdminMenu {
         public static void showMenu()
         {
+        	Scanner input=new Scanner(System.in);
             System.out.println("-------Admin Menu----------------");
             System.out.println("1. genearte report card");
             System.out.println("2. add prof");
@@ -33,19 +34,43 @@ public class CRSAdminMenu {
                 switch(option)
                 {
                 case 1:
-                	admin.generateReportCard();
+//                	admin.generateReportCard();
                     break;
                 case 2:
-                    admin.addProfessor();
+//                    admin.addProfessor();
                     break;
                 case 3:
+                	
+                    System.out.println("------Select One Option-------");
+                    System.out.println("1. Approve All Students");
+                    System.out.println("2. Approve by Student ID ");
+                    
+                    int selectedOption=input.nextInt();
+                    
+                    switch(selectedOption) {
+                    
+                    case 1: 
+                    	System.out.println("Approved All Student!!");  
+                        break;
+                        
+                    case 2: 
+                    	System.out.println("Enter the Student Id:");
+                            int stdId=input.nextInt();
+                            System.out.println(stdId+" Approved!!");
+                        break;
+                        
+                    default: System.out.println("Invalid Choice!!");
+                        
+                        
+                    }
                     admin.approveStudentRegistration();
+                    
                     break;
                 case 4:
-                    admin.addCourse();
+//                    admin.addCourse();
                     break;
                 case 5:
-                    admin.removeCourse();
+//                    admin.removeCourse();
                     break;
                 case 6 :
                     showMenu();
