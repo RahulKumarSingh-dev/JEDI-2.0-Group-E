@@ -8,6 +8,6 @@ package com.flipkart.services;
  *
  */
 public interface ProfessorOperatioinInterface {
-	 public void addGrades(int studentId, String courseId, String grade);
-	    public void viewEnrolledStudents(String courseId);
+	 public boolean addGrades(int studentId, int courseId, int semester,String grade);
+	    public void viewEnrolledStudents(int professorId);
 }

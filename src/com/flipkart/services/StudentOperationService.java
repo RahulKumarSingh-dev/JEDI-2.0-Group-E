@@ -3,56 +3,70 @@
  */
 package com.flipkart.services;
 import com.flipkart.bean.*;
+
+import com.flipkart.dao.*;
 /**
  * @author rahul.kumarsingh
  *
  */
 public class StudentOperationService implements StudentServiceInterface{
-	
-	public void createStudent() {
-		// register the new student.
+
+	public void registerStudent(Student student) {
+		StudentDAOInterface stdOperations= new StudentDAOImplementation();
+		stdOperations.registerStudent(student);
 		
-		System.out.println("Student is registered.");
+		
+//		StudentDAOInterface stdDaoOperations=new StudentDAOImplementation();
+//		stdDaoOperations.registerStudent(newStudent);
+//	
 	}
 
-	public void addCourse(int studentId, int courseId) {
-		// add the course in the student registered courses
-
-		System.out.println("Course is added");
-	}
-
-	public void dropCourse(int studentId, int courseId) {
-		// remove the course from the student registered courses
-
-		System.out.println("Course is removed");
-
-	}
-
+	
 	public void viewGradeCard(int studentId) {
 		// student view his grade card.
 		System.out.println("Student Grade Card");
+		StudentDAOInterface stdDaoOperations=new StudentDAOImplementation();
+		stdDaoOperations.viewGradeCard(studentId);	
 	}
 
-	public void makePayment(int studentId) {
-		// make the payment for the registered courses.
-		// Create a new payment bean
-        Payment payment = new Payment();
-        payment.setPaymentId("P12345");
-        payment.setAmount(100);
-        payment.setStudentName("John Doe");
-        payment.setPaymentMode("online"); // Set the payment mode to "online", "offline", or "scholarship"
+	public void addCourse(int studentId,int sem,int courseCode)
+	{
+		StudentDAOInterface stdDaoOperations=new StudentDAOImplementation();
+		stdDaoOperations.addCourse(studentId,sem,courseCode);
+	}
+	
+	public void dropCourse(int sudentId,int courseCode)
+	{
+		StudentDAOInterface stdDaoOperations=new StudentDAOImplementation();
+		stdDaoOperations.dropCourse(sudentId,courseCode);
+	}
+	public void viewCourse()
+	{
+		StudentDAOInterface stdDaoOperations=new StudentDAOImplementation();
+		stdDaoOperations.viewCourse();
 
-        // Create a payment service instance
-        PaymentOperationService paymentService = new PaymentOperationService();
-
-        // Process the payment
-        paymentService.processPayment(payment);
+	}
+	public void semesterRegistration(SemesterRegistration semRegistration)
+	{
+		StudentDAOInterface stdDaoOperations=new StudentDAOImplementation();
+		stdDaoOperations.semesterRegisteration(semRegistration);
 	}
 
-	public void semesterRegistration(int studentId, int semester) {
-		// student register in the semester.
+
+
+	@Override
+	public void makePayment(int studentId, float amount, boolean status, String paymentMode) {
+		// TODO Auto-generated method stub
+		Payment payment=new Payment();
+		payment.setAmount(amount);
+		payment.setPaymentMode(paymentMode);
+		payment.setStudentId(studentId);
+		payment.setStatus(status);
 		
-		System.out.println("Student is registering in a semester.");
+		PaymentDAOInterface paymentDAOOperations = new PaymentDAOImplementation();
+		paymentDAOOperations.storePayment(payment);
+		
 	}
+	
 
 }

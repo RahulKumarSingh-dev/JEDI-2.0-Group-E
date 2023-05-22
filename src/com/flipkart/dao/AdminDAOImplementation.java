@@ -24,7 +24,7 @@ public class AdminDAOImplementation implements AdminDAOInterface {
 	static final String PASS = "rahulkumar";
 	
 	
-
+	
 	public void addProfessor(Professor professor) {
 		
 		User user= new User();

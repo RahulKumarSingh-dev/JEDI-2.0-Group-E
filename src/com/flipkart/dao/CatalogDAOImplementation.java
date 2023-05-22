@@ -4,6 +4,7 @@
 package com.flipkart.dao;
 
 import java.sql.Connection;
+
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -48,12 +49,12 @@ public class CatalogDAOImplementation implements CatalogDAOInterface {
 
 			// Hard coded data
 
-			String courseCode = course.getCourseCode();
+			int courseCode = course.getCourseCode();
 			String name = course.getName();
 			boolean isOffered = course.getIsOffered();
 			int instructorId = course.getInstructorId();
 			// Bind values into the parameters.
-			stmt.setString(1, courseCode); // This would set age
+			stmt.setInt(1, courseCode); // This would set age
 			stmt.setString(2, name);
 			stmt.setBoolean(3, isOffered);
 			stmt.setInt(4, instructorId);
@@ -90,7 +91,7 @@ public class CatalogDAOImplementation implements CatalogDAOInterface {
 		System.out.println("Goodbye!");
 	}
 
-	public void removeCourse(String courseCode) {
+	public void removeCourse(int courseCode) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 
@@ -107,7 +108,7 @@ public class CatalogDAOImplementation implements CatalogDAOInterface {
 
 			// STEP 4: Execute a query
 			System.out.println("Creating statement...");
-			String sql = "delete from catalog where courseCode=courseCode";
+			String sql = "delete from catalog where courseCode=?";
 			// String sql = "UPDATE Employees set age=? WHERE id=?";
 			// String sql1="delete from employee where id=?";
 			// stmt.setInt(1, 101);
@@ -115,7 +116,7 @@ public class CatalogDAOImplementation implements CatalogDAOInterface {
 
 			// Hard coded data
 
-			stmt.setString(1, courseCode);
+			stmt.setInt(1, courseCode);
 
 			int x = stmt.executeUpdate();
 
@@ -150,7 +151,7 @@ public class CatalogDAOImplementation implements CatalogDAOInterface {
 		System.out.println("Goodbye!");
 	}
 
-	public void updateCourse(String courseCode, String newInstructorId, boolean isOffered, String newCourseName) {
+	public void updateCourse(int courseCode, String newInstructorId, boolean isOffered, String newCourseName) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 
@@ -175,7 +176,7 @@ public class CatalogDAOImplementation implements CatalogDAOInterface {
 
 			// Hard coded data
 
-			stmt.setString(1, courseCode);
+			stmt.setInt(1, courseCode);
 
 			int x = stmt.executeUpdate();
 
@@ -210,7 +211,7 @@ public class CatalogDAOImplementation implements CatalogDAOInterface {
 		System.out.println("Goodbye!");
 	}
 
-	public void assignCourseToProfessor(String courseCode, int professorId) {
+	public void assignCourseToProfessor(int courseCode, int professorId) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 
@@ -227,7 +228,7 @@ public class CatalogDAOImplementation implements CatalogDAOInterface {
 
 			// STEP 4: Execute a query
 			System.out.println("Creating statement...");
-			String sql = "update catalog set instructorId = professorId where courseCode=courseCode";
+			String sql = "update catalog set instructorId = ? where courseCode = ? ";
 			// String sql = "UPDATE Employees set age=? WHERE id=?";
 			// String sql1="delete from employee where id=?";
 			// stmt.setInt(1, 101);
@@ -235,7 +236,8 @@ public class CatalogDAOImplementation implements CatalogDAOInterface {
 
 			// Hard coded data
 
-			stmt.setString(1, courseCode);
+			stmt.setInt(1, professorId);
+			stmt.setInt(2, courseCode);
 
 			int x = stmt.executeUpdate();
 

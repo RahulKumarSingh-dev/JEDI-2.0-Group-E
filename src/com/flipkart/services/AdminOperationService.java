@@ -42,24 +42,22 @@ public class AdminOperationService implements AdminServiceInterface{
 		
 		
 	}
-	public void removeCourse(String courseCode) { //done
+	public void removeCourse(int courseCode) { //done
 		// Logic to remove the course from the catalogue
 		CatalogDAOInterface catalogOperations=new CatalogDAOImplementation();
 		catalogOperations.removeCourse(courseCode);
 	}
 	
-	public void updateCourse(String courseCode,String newInstructorId,boolean isOffered,String newCourseName) { //done
+	public void updateCourse(int courseCode,String newInstructorId,boolean isOffered,String newCourseName) { //done
 		// Logic to update the course from the catalogue
 		
 		CatalogDAOInterface catalogOperations=new CatalogDAOImplementation();
 		catalogOperations.updateCourse(courseCode,newInstructorId,isOffered,newCourseName);
 	}
 	
-	public void assignCourseToProfessor(String courseCode,int professorId) {
+	public void assignCourseToProfessor(int courseCode,int professorId) {
 		CatalogDAOInterface catalogOperations=new CatalogDAOImplementation();
 		catalogOperations.assignCourseToProfessor(courseCode,professorId);
 	}
-	
-	
 
 }

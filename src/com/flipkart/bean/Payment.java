@@ -12,6 +12,22 @@ public class Payment {
 	private int studentId;
 	private String referenceId;
 	private String paymentId;
+	
+	
+	/**
+	 * @return the paymentId
+	 */
+	public String getPaymentId() {
+		return paymentId;
+	}
+
+	/**
+	 * @param paymentId the paymentId to set
+	 */
+	public void setPaymentId(String paymentId) {
+		this.paymentId = paymentId;
+	}
+
 	private float amount;
 	private boolean status;
 	private String paymentMode;
@@ -30,19 +46,7 @@ public class Payment {
 		this.studentName = studentName;
 	}
 
-	/**
-	 * @return the paymentId
-	 */
-	public String getPaymentId() {
-		return paymentId;
-	}
-
-	/**
-	 * @param paymentId the paymentId to set
-	 */
-	public void setPaymentId(String paymentId) {
-		this.paymentId = paymentId;
-	}
+	
 
 
 
@@ -55,7 +59,7 @@ public class Payment {
 	}
 
 	/**
-	 * @param modeOfPayment the modeOfPayment to set
+	 * @param modeofPayment the modeOfPayment to set
 	 */
 	public void setPaymentMode(String paymentMode) {
 		this.paymentMode = paymentMode;
@@ -106,7 +110,7 @@ public class Payment {
 	/**
 	 * @return the status
 	 */
-	public boolean isStatus() {
+	public boolean getStatus() {
 		return status;
 	}
 

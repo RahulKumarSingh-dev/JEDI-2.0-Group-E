@@ -14,8 +14,8 @@ public interface AdminServiceInterface {
 	
     public void approveStudentRegistration();
 	public void addCourse(Course course);
-    public void removeCourse(String courseId);
-    public void updateCourse(String courseCode,String newInstructorId,boolean isOffered,String newCourseName) ;
-  
+    public void removeCourse(int courseCode);
+    public void updateCourse(int courseCode,String newInstructorId,boolean isOffered,String newCourseName) ;
+    public void assignCourseToProfessor(int courseCode,int professorId);
 
 }

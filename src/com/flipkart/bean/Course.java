@@ -8,20 +8,20 @@ import java.util.*;
  *
  */
 public class Course {
-    private String courseCode;
+    private int courseCode;
     private String name;
     private boolean isOffered;
     private int instructorId;
 	/**
 	 * @return the courseCode
 	 */
-	public String getCourseCode() {
+	public int getCourseCode() {
 		return courseCode;
 	}
 	/**
 	 * @param courseCode the courseCode to set
 	 */
-	public void setCourseCode(String courseCode) {
+	public void setCourseCode(int courseCode) {
 		this.courseCode = courseCode;
 	}
 	/**

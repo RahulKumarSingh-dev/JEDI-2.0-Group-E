@@ -12,10 +12,10 @@ import com.flipkart.bean.Course;
 public interface CatalogDAOInterface {
 	public void addCourse(Course course);
 	
-	public void removeCourse(String courseCode);
+	public void removeCourse(int courseCode);
 	
-	public void assignCourseToProfessor(String courseCode,int professorId);
+	public void assignCourseToProfessor(int courseCode,int professorId);
 
 	
-	public void updateCourse(String courseCode,String newInstructorId,boolean isOffered,String newCourseName) ;
+	public void updateCourse(int courseCode,String newInstructorId,boolean isOffered,String newCourseName) ;
 }
